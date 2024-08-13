@@ -1,41 +1,48 @@
 function validasi() {
+  // Validasi nama
+  var nama = document.forms["ppdbform"]["nama"].value;
+  if (!/^[a-zA-Z\s]+$/.test(nama)) {
+    alert("Nama harus berupa huruf dan spasi.");
+    document.getElementById("nama").focus();
+    document.ppdbform.nama.value = "";
+    return false;
+  }
 
-    var konfirmasi = confirm('Apakah akan dilanjutkan untuk mengirim pesan?');
+  // Validasi NISN
+  var nisn = document.forms["ppdbform"]["nisn"].value;
+  if (!/^\d+$/.test(nisn)) {
+    alert("NISN harus berupa angka.");
+    document.getElementById("nisn").focus();
+    document.ppdbform.nisn.value = "";
+    return false;
+  }
+  //validasi alamat
+  var alamat = document.forms["ppdbform"]["alamat"].value;
+  if (!/^[a-zA-Z\s]+$/.test(nama)) {
+    alert("Alamat Harus diisi dengan benar.");
+    document.getElementById("alamat").focus();
+    document.ppdbform.alamat.value = "";
+    return false;
+  }
 
-    if (konfirmasi == true) {
-        var nama = document.forms["ppdbform"]["nama"].value;
-        var nisn = document.forms["ppdbform"]["nisn"].value;
-        var alamat = document.forms["ppdbform"]["alamat"].value;
-        var nomor = document.forms["ppdbform"]["nomor"].value;
-        var email = document.forms["ppdbform"]["email"].value;
-        var tgl_lahir = document.forms["ppdbform"]["tgl_lahir"].value;
+  // Validasi nomor
+  var nomor = document.forms["ppdbform"]["nomor"].value;
+  if (!/^\d+$/.test(nisn)) {
+    alert("Nomor harus berupa angka.");
+    document.getElementById("nomor").focus();
+    document.ppdbform.nomor.value = "";
+    return false;
+  }
 
-        console.log(nama);
-        console.log(nisn);
-        console.log(alamat);
-        console.log(nomor);
-        console.log(email);
-        console.log(tgl_lahir);
+  var email = document.forms["ppdbform"]["email"].value;
+  if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+    alert("Nama harus berupa huruf,angka,dan @");
+    document.getElementById("nama").focus();
+    document.ppdbform.nama.value = "";
+    return false;
+  }
 
-        if (nama == '') {
-            alert('nama harus dimasukan');
-        }
-        if (nisn == '') {
-            alert('nisn harus diisi dengan angka');
-        }
-        if (alamat == '') {
-            alert('alamat harus dimasukan');
-        }
-        if (nomor == '') {
-            alert('nomor harus dimasukan');
-        }
-        if (email == '') {
-            alert('email harus dimasukan');
-        }
-        if (tgl_lahir == '') {
-            alert('Tanggal lahir harus dimasukan');
-        }
-    } else {
-        alert('kirim pesan dibatalkan');
-    }
+  alert("Pendaftaran telah terkirim");
+
+  return true; // Mengembalikan true jika semua validasi lolos
 }
